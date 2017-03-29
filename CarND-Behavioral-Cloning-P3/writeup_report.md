@@ -81,7 +81,7 @@ Using adam optimizer to minimize the MSE on the steering value, I trained my mod
 
 The final step was to run the simulator to see how well the car was driving around track one. The car can stay on the track reasonably well, but there are still a a couple of driving oscillations as shown in the video below. 
 
-![drive_video](model.mp4)
+![model.mp4](model.mp4)
 
 2. Final Model Architecture
 

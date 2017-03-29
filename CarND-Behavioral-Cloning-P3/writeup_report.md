@@ -71,7 +71,7 @@ My first step was to use a convolution neural network model similar to the NVIDI
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set as shown in the figure below. Moreoever, the validation loss stayed high even when the training loss continued to decrease. This implied that the model was overfitting. 
 
-![old_model][writeup_images/old_model_loss_plot.png]
+![old_model](writeup_images/old_model_loss_plot.png)
 
 To combat the overfitting, I first tried adding dropout layers at the output of every 2 convolutional layers. While it can help, I still found it insufficient to give me a good performance - i.e. I canno keep the car on the track.
 
@@ -81,7 +81,7 @@ Using adam optimizer to minimize the MSE on the steering value, I trained my mod
 
 The final step was to run the simulator to see how well the car was driving around track one. The car can stay on the track reasonably well, but there are still a a couple of driving oscillations as shown in the video below. 
 
-![drive_video][model.mp4]
+![drive_video](model.mp4)
 
 2. Final Model Architecture
 
@@ -100,4 +100,4 @@ I randomly shuffled the data set and put 20% of it as validation set to help det
 
 The loss vs. epoch for both train and validation set is shown in the figure below. As can be seen, starting from around epoch 19, the validation loss no longer drops as fast as the train loss which indicates the beginning of overfitting so I picked the saved model from epoch 19 as the final model for my test drive.
 
-![new_model][writeup_images/new_model_loss_plot.png]
+![new_model](writeup_images/new_model_loss_plot.png)

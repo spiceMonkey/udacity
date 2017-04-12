@@ -45,7 +45,9 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ##### 1. Provide an example of a distortion-corrected image.
 Using the extracted undistortion matrices from the camera calibration module, I can undistort camera images like this test image below:
+
 ![alt text][image2]
+
 ##### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 43 through 110 in `code.py`).  Here's an example of my output for this step.  (note: this is the same test image as before)
 
@@ -53,7 +55,7 @@ I used a combination of color and gradient thresholds to generate a binary image
 
 ##### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warp()`, which appears in lines 113 through 118 in the file `code.py`.  The `warp()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warp()`, which appears in lines 113 through 118 in the file `code.py`.  The `warp()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose to hardcode the source and destination points in the following manner:
 
 ```
 src = np.float32(
@@ -111,5 +113,5 @@ Here's a [link to my video result](./project_output.mp4)
 #### Discussion
 
 ##### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
+The most challenging part I observed during the project was robust lane line detection. Under different lightning and road conditions, it could lose track of the detected lines. Applying some moving average filter and tuning line detection window size etc. could help, which is why my pipeline can work relatively robust in the project_video.mp4. But I found it would fail for the challenge videos. More image processing is necessary to make the line detection more robust - I should try adding additional filtering and color enhancement techniques to reduce thresholded background noise. Even deep learning techniques could be utilized to help identify lane lines. Due to the time limit, I didn't explore these options this time.
 

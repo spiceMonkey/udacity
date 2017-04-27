@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/cam_undistort.png "Undistorted"
 [image2]: ./output_images/undistorted.png "Road Undistorted"
-[image3]: ./output_images/threshold.png "Binary Example"
+[image3]: ./output_images/thresholded.png "Binary Example"
 [image4]: ./output_images/warpped.png "Warp Example"
 [image5]: ./output_images/lane_fit.png "Fit Visual"
 [image6]: ./output_images/overlay.png "Overlayed Image with Lane Highlight"

@@ -11,11 +11,10 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./output_images/car_not_car.png
-[image2]: ./output_images/car_not_car_hog.jpg
+[image2]: ./output_images/car_not_car_hog.png
 [image3]: ./output_images/car_id.png
 [image4]: ./output_images/nocar_id.png
 [image5]: ./output_images/car_id_heatmap.png
-[video1]: ./project_output.mp4
 
 ### [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
 #### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -61,10 +60,8 @@ I decided to search only the bottom half of the image to identify cars to reduce
 ##### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on 2 scales (1.2 and 1.5) using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images - notice that windows are combined into one with the aid of a heatmap + threshold filtering technique:
-
 Car detected:
 ![car detected][image3]
-
 No car detected:
 ![no car detected][image4]
 
@@ -73,7 +70,7 @@ No car detected:
 #### Video Implementation
 
 ##### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_output.mp4)
 
 
 ##### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.

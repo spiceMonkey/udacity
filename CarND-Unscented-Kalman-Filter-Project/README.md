@@ -17,7 +17,7 @@ Once the install for uWebSocketIO is complete, the main program can be built and
 
 Note that the programs that need to be written to accomplish the project are src/ukf.cpp, src/ukf.h, tools.cpp, and tools.h
 
-The program main.cpp has already been filled out, but feel free to modify it.
+The program main.cpp has already been filled out, but I added optional commands to output the NIS of lidar and radar sensors for process noise optimization. Output data is saved under /data/lidar_nis.txt and /data/radar_nis.txt. A python script "check_nis.py" is also added to plot the sensor NIS w.r.t to their reference values for optimization purpose.
 
 Here is the main protcol that main.cpp uses for uWebSocketIO in communicating with the simulator.
 

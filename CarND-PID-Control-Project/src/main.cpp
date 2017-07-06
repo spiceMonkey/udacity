@@ -35,8 +35,10 @@ int main()
   	PID pid_pos;
   	PID pid_spd;
   	// Initialize the pid variable.
-  	pid_pos.Init(0.2, 0.02, 2, true, 1e-4, 0.01, 0.001, 0.1); // one PID for steering
-  	pid_spd.Init(0.1, 0.01, 0.1, true, 1e-4, 0.01, 0.001, 0.1); // one PID for speed
+  	//pid_pos.Init(0.2, 0.01, 2, true, 1e-4, 0.01, 0.001, 0.1); // one PID for steering
+  	//pid_spd.Init(0.1, 0, 0.1, true, 1e-4, 0.01, 0.0001, 0.1); // one PID for speed
+  	pid_pos.Init(0.21, 0.01, 2.1, false, 1e-4, 0.01, 0.001, 0.1); // one PID for steering
+  	pid_spd.Init(0.21, 0.001, 1.2, false, 1e-4, 0.01, 0.0001, 0.1); // one PID for speed
 	
   	h.onMessage([&pid_pos, &pid_spd](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
   	  	// "42" at the start of the message means there's a websocket message event.

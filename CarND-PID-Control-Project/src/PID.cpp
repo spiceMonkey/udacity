@@ -37,7 +37,7 @@ void PID::UpdateError(double cte) {
 	i_error += cte; // i_error is the integral of past cte errors
 	p_error = cte; // p_error is simply current cte
 
-	// PID coefficients optimization procedures - use twindle method
+	// PID coefficients optimization procedures - use twiddle method
 	if(en_opt && (dp + di + dd > tol_error)) {
 		cur_error = cte * cte;	
 		// parameter tuning starts here	

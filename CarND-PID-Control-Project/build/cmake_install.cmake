@@ -1,4 +1,4 @@
-# Install script for directory: /home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project
+# Install script for directory: /home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

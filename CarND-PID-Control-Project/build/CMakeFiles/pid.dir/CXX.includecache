@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/PID.cpp
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/PID.cpp
 PID.h
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/PID.h
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/PID.h
 
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/PID.h
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/PID.h
 
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/json.hpp
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/json.hpp
 algorithm
 -
 array
@@ -68,15 +68,15 @@ utility
 vector
 -
 
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/main.cpp
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/main.cpp
 uWS/uWS.h
 -
 iostream
 -
 json.hpp
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/json.hpp
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/json.hpp
 PID.h
-/home/yuelu/Dropbox/udacity.nd/self.driving.car/Term2/CarND-PID-Control-Project/src/PID.h
+/home/yuelu/Dropbox/udacity.nd/self.driving.car/my_code/udacity/CarND-PID-Control-Project/src/PID.h
 math.h
 -
 

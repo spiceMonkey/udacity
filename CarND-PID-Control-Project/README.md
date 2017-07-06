@@ -10,9 +10,9 @@ With some iterations, the car can run on the track at 30mph with a final set of 
 
 |  | Steering | Speed |
 |--| ---------|-------|
-|Kp| 0.267    | 0.214 |
-|Ki| 0.0250   | 0.0189|
-|Kd| 2.560    | 1.346 |
+|Kp| 0.21    | 0.21 |
+|Ki| 0.01   | 0.001|
+|Kd| 2.1    | 1.2 |
 
 A video clip showing the car's movement can be found in this ![link](ud_pid.mp4). Notice the car initially vary widely during PID parameter tuning and later becomes more stable when the tuning is done. However, I still found it is hard to achieve a very smooth control with the PID controller, particuarlly at very high speed. 
 

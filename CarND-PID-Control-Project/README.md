@@ -2,7 +2,21 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Reflections
 
+I've implemented 2 separate PID controllers for steering control and speed control. P, I, D parameters are manually tuned first and then fine tuned through the twiddling algorithm. The I parameter is chosen to be much smaller than the P and D parameters to avoid instability. 
+
+With some iterations, the car can run on the track at 30mph with a final set of PID parameters as shown below:
+
+|  | Steering | Speed |
+|--| ---------|-------|
+|Kp| 0.267    | 0.214 |
+|Ki| 0.0250   | 0.0189|
+|Kd| 2.560    | 1.346 |
+
+A video clip showing the car's movement can be found in this ![link](ud_pid.mp4). Notice the car initially vary widely during PID parameter tuning and later becomes more stable when the tuning is done. However, I still found it is hard to achieve a very smooth control with the PID controller, particuarlly at very high speed. 
+
+---
 ## Dependencies
 
 * cmake >= 3.5

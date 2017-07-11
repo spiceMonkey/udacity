@@ -88,7 +88,10 @@ int main() {
   // MPC is initialized here!
   MPC mpc;
 
-  h.onMessage([&mpc](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
+  double steer_value = 0;
+  double throttle_value = 0; 
+
+  h.onMessage([&mpc, &steer_value, &throttle_value](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                      uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -127,9 +130,15 @@ int main() {
           double epsi = - atan(coeffs[1]);
 
           // current state in vehicle's coordinate
+          // deal with latency by calculate the sate in 100ms using the kinematic model
           Eigen::VectorXd state(6);
-          state << 0, 0, 0, v, cte, epsi;
-
+          state[0] = v * cos(0) * 0.1;
+          state[1] = v * sin(0) * 0.1;
+          state[2] = - v * steer_value / 2.67 * 0.1;
+          state[3] = v + throttle_value * 0.1;
+          state[4] = cte + v * sin(epsi) * 0.1;
+          state[5] = epsi - (v * steer_value / 2.67 * 0.1);
+          
           // now use MPC to predict the optimal trajectory
           vector<double> pos_sol, ctr_sol; // vectors to hold position and control solutions
 
@@ -137,24 +146,21 @@ int main() {
           std::tie(pos_sol, ctr_sol) = mpc.Solve(state, coeffs);
           
           // extract throttle value  
-          double throttle_value = ctr_sol[1];
+          throttle_value = ctr_sol[1];
           // extract steer value
-          double steer_value = ctr_sol[0];
-          steer_value /= deg2rad(25); 
-          if (steer_value > 1) steer_value = 1; 
-          else if (steer_value < -1) steer_value = -1; 
+          steer_value = ctr_sol[0];
 
           json msgJson;
           // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
           // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
-          msgJson["steering_angle"] = steer_value;
+          msgJson["steering_angle"] = steer_value / deg2rad(25);
           msgJson["throttle"] = throttle_value;
 
           //Display the MPC predicted trajectory 
           vector<double> mpc_x_vals;
           vector<double> mpc_y_vals;
 
-          for (size_t i = 2; i < pos_sol.size(); i++) {
+          for (size_t i = 0; i < pos_sol.size(); i++) {
             if (i % 2 == 0) mpc_x_vals.push_back(pos_sol[i]);
             else mpc_y_vals.push_back(pos_sol[i]);
           }
@@ -168,7 +174,7 @@ int main() {
           vector<double> next_x_vals;
           vector<double> next_y_vals;
 
-          for (size_t i = 1; i < 50; i++) {
+          for (size_t i = 2; i < 50; i++) {
             next_x_vals.push_back(i);
             next_y_vals.push_back(polyeval(coeffs, i));
           }

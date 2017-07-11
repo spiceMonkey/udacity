@@ -5,7 +5,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 * In the MPC controller, I use the kinematic model that includes the vehicle's x and y coordinates, orientation angle psi, velocity, cross-track error (CTE) and angle error (epsi) to generate output actuation parameters. Vehichle's actuation parameters include steering angle delta and accelaration a. State and update equations are the same as taught in the lecture with the exception that the polarity for the steering angle delta is flipped to account for the opposite definition of steering direction used in the vehicle actuation.
 
-* I choose N = 8 as the number of timesteps for MPC calculation and a dt of 0.1s (100ms) for each state update. MPC's latency (100ms) is taken into account by altering the update equations to account for an earlier (e.g. 100ms ago) set a and delta values (line 126-132 of MPC.cpp). 
+* I choose N = 8 as the number of timesteps for MPC calculation and a dt of 0.1s (100ms) for each state update. MPC's latency (100ms) is taken into account by updating the state variables with the kinematic equations to account for the effect from an earlier (e.g. 100ms ago) set a and delta values (line 135-140 of main.cpp). 
 
 * The MPC assumed a 3rd order polynominal fitting. Waypoints from the map are first transformed into the vehicle's coordinates to simplify the calculations (line 72-82 and line 122 in main.cpp). Note by doing this vehicle's current x, y and psi all become 0.
 

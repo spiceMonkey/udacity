@@ -8,9 +8,6 @@ using CppAD::AD;
 // Set the timestep length and duration
 size_t N = 8; // 8 points to consider
 double dt = 0.1; // update every 100ms
-double lt = 0.1; // 100ms of latency
-
-size_t lt_n = size_t(lt/dt); // number of time steps due to latency
 
 double ref_v = 60;
 
@@ -74,21 +71,21 @@ class FG_eval {
     // The part of the cost based on the reference state.
     // minimize error on position, angle and speed
     for (size_t t = 0; t < N; t++) {
-      fg[0] += 5 * CppAD::pow(vars[cte_start + t], 2);
-      fg[0] += 5 * CppAD::pow(vars[epsi_start + t], 2);
-      fg[0] += 3 * CppAD::pow(vars[v_start + t] - ref_v, 2);
+      fg[0] += 4 * CppAD::pow(vars[cte_start + t], 2);
+      fg[0] += 4 * CppAD::pow(vars[epsi_start + t], 2);
+      fg[0] += 4 * CppAD::pow(vars[v_start + t] - ref_v, 2);
     }
 
     // Minimize the use of actuators.
     for (size_t t = 0; t < N - 1; t++) {
       fg[0] += 50 * CppAD::pow(vars[delta_start + t], 2);
-      fg[0] += 30 * CppAD::pow(vars[a_start + t], 2);
+      fg[0] += 40 * CppAD::pow(vars[a_start + t], 2);
     }
 
     // Minimize the value gap between sequential actuations.
     for (size_t t = 0; t < N - 2; t++) {
-      fg[0] += 500 * CppAD::pow(vars[delta_start + t + 1] - vars[delta_start + t], 2);
-      fg[0] += 300 * CppAD::pow(vars[a_start + t + 1] - vars[a_start + t], 2);
+      fg[0] += 800 * CppAD::pow(vars[delta_start + t + 1] - vars[delta_start + t], 2);
+      fg[0] += 500 * CppAD::pow(vars[a_start + t + 1] - vars[a_start + t], 2);
     }
 
     //
@@ -120,16 +117,8 @@ class FG_eval {
       AD<double> cte0 = vars[cte_start + t - 1];
       AD<double> epsi0 = vars[epsi_start + t - 1];
 
-      AD<double> delta0, a0;
-    
-      // for account for the latency
-      if(t >= lt_n + 1) {
-        delta0 = vars[delta_start + t -1 - lt_n];
-        a0 = vars[a_start + t -1 - lt_n];
-      } else {
-        delta0 = vars[delta_start + t - 1];
-        a0 = vars[a_start + t - 1];
-      }
+      AD<double> delta0 = vars[delta_start + t - 1]; 
+      AD<double> a0 = vars[a_start + t - 1];
 
       AD<double> f0 = polyeval_cppad(coeffs, x0);
       AD<double> psides0 = CppAD::atan(polyeval_slope_cppad(coeffs, x0));
